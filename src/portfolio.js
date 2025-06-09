@@ -118,7 +118,7 @@ const educationInfo = {
     },
     {
       schoolName: "Narayana Pre-University",
-      logo: require("./assets/images/narayanaLogo.jpg"),
+      logo: require("./assets/images/narayanaLogo.jpeg"),
       subHeader: "PCMC",
       desc: "Studied PCMC course i.e Physics, Chemistry, Math, Computer Science. Took courses about Software Engineering, C Programming, Operating Systems.",
     },
