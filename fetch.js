@@ -72,7 +72,11 @@ if (USE_GITHUB_DATA === "true") {
 
     console.log(`statusCode: ${res.statusCode}`);
     if (res.statusCode !== 200) {
-      throw new Error(ERR.requestFailed);
+      console.warn(
+        `Warning: ${ERR.requestFailed} Skipping GitHub profile data, build will continue.`
+      );
+      res.resume();
+      return;
     }
 
     res.on("data", d => {
@@ -87,7 +91,7 @@ if (USE_GITHUB_DATA === "true") {
   });
 
   req.on("error", error => {
-    throw error;
+    console.warn(`Warning: ${ERR.requestFailed} (${error.message}) Skipping GitHub profile data, build will continue.`);
   });
 
   req.write(data);
@@ -108,7 +112,11 @@ if (MEDIUM_USERNAME !== undefined) {
 
     console.log(`statusCode: ${res.statusCode}`);
     if (res.statusCode !== 200) {
-      throw new Error(ERR.requestMediumFailed);
+      console.warn(
+        `Warning: ${ERR.requestFailedMedium} Skipping Medium blogs data, build will continue.`
+      );
+      res.resume();
+      return;
     }
 
     res.on("data", d => {
@@ -123,7 +131,7 @@ if (MEDIUM_USERNAME !== undefined) {
   });
 
   req.on("error", error => {
-    throw error;
+    console.warn(`Warning: ${ERR.requestFailedMedium} (${error.message}) Skipping Medium blogs data, build will continue.`);
   });
 
   req.end();

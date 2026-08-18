@@ -20,3 +20,6 @@ yarn-error.log*
 #user generated content
 public/profile.json
 public/blogs.json
+
+# secrets
+.env
